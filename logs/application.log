@@ -8247,3 +8247,39 @@ Caused by: org.hibernate.query.sqm.PathElementException: Could not resolve attri
 2025-08-05T10:39:07.205+05:30  INFO 10344 --- [demo] [Thread-408] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-08-05T10:39:07.206+05:30  INFO 10344 --- [demo] [Thread-408] com.zaxxer.hikari.HikariDataSource       : HikariPool-112 - Shutdown initiated...
 2025-08-05T10:39:07.214+05:30  INFO 10344 --- [demo] [Thread-408] com.zaxxer.hikari.HikariDataSource       : HikariPool-112 - Shutdown completed.
+2025-08-05T10:39:07.374+05:30  INFO 10344 --- [demo] [restartedMain] .e.s.ParkingSlotBookingSystemApplication : Starting ParkingSlotBookingSystemApplication using Java 21.0.5 with PID 10344 (C:\Users\prath\OneDrive\Desktop\Parking slot\springapp\target\classes started by prath in C:\Users\prath\OneDrive\Desktop\Parking slot)
+2025-08-05T10:39:07.375+05:30  INFO 10344 --- [demo] [restartedMain] .e.s.ParkingSlotBookingSystemApplication : No active profile set, falling back to 1 default profile: "default"
+2025-08-05T10:39:07.489+05:30  INFO 10344 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-05T10:39:07.505+05:30  INFO 10344 --- [demo] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 4 JPA repository interfaces.
+2025-08-05T10:39:07.570+05:30  INFO 10344 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2025-08-05T10:39:07.571+05:30  INFO 10344 --- [demo] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-05T10:39:07.571+05:30  INFO 10344 --- [demo] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-05T10:39:07.588+05:30  INFO 10344 --- [demo] [restartedMain] o.a.c.c.C.[Tomcat-45].[localhost].[/]    : Initializing Spring embedded WebApplicationContext
+2025-08-05T10:39:07.589+05:30  INFO 10344 --- [demo] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 212 ms
+2025-08-05T10:39:07.605+05:30  INFO 10344 --- [demo] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-05T10:39:07.609+05:30  INFO 10344 --- [demo] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-05T10:39:07.615+05:30  INFO 10344 --- [demo] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-05T10:39:07.616+05:30  INFO 10344 --- [demo] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-113 - Starting...
+2025-08-05T10:39:07.630+05:30  INFO 10344 --- [demo] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-113 - Added connection com.mysql.cj.jdbc.ConnectionImpl@620c40ac
+2025-08-05T10:39:07.631+05:30  INFO 10344 --- [demo] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-113 - Start completed.
+2025-08-05T10:39:07.632+05:30  WARN 10344 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-05T10:39:07.632+05:30  WARN 10344 --- [demo] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-08-05T10:39:07.633+05:30  INFO 10344 --- [demo] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-113)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-05T10:39:07.703+05:30  INFO 10344 --- [demo] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-05T10:39:08.485+05:30  INFO 10344 --- [demo] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-05T10:39:08.558+05:30  WARN 10344 --- [demo] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-08-05T10:39:08.587+05:30  INFO 10344 --- [demo] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-08-05T10:39:08.593+05:30  INFO 10344 --- [demo] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2025-08-05T10:39:08.595+05:30  INFO 10344 --- [demo] [restartedMain] .e.s.ParkingSlotBookingSystemApplication : Started ParkingSlotBookingSystemApplication in 1.247 seconds (process running for 4771.529)
+2025-08-05T10:39:08.596+05:30  INFO 10344 --- [demo] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-08-05T10:44:20.762+05:30  INFO 10344 --- [demo] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat-45].[localhost].[/]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-05T10:44:20.765+05:30  INFO 10344 --- [demo] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-05T10:44:20.770+05:30  INFO 10344 --- [demo] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-08-05T11:17:46.511+05:30  WARN 10344 --- [demo] [HikariPool-113:housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-113 - Thread starvation or clock leap detected (housekeeper delta=22m37s386ms24µs600ns).
