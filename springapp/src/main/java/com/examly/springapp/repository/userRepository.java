@@ -5,7 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface userRepository extends JpaRepository<user, Integer> {
+public interface userRepository extends JpaRepository<user, Integer> 
+{
     boolean existsByEmail(String email);
-    List<user> findByFirstNameAndEmail(String firstName, String email); // Updated as per your field names
+    List<user> findByFirstNameAndEmail(String firstName, String email); 
 }

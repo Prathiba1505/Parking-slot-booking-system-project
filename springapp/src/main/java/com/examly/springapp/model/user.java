@@ -59,47 +59,129 @@ public class user {
         DEFAULT_USER
     }
 
-    // Getters and setters
+    public int getUserId() 
+    {
+         return id; 
+    }
+    public void setUserId(int userId) 
+    {
+         this.id = userId; 
+    }
 
-    public int getUserId() { return id; }
-    public void setUserId(int userId) { this.id = userId; }
+    public String getUsername() 
+    {
+         return username; 
+    }
+    public void setUsername(String username) 
+    {
+         this.username = username; 
+    }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public String getEmail() 
+    {
+         return email; 
+    }
+    public void setEmail(String email) 
+    {
+         this.email = email; 
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getPasswordHash() 
+    {
+         return passwordHash; 
+    }
+    public void setPasswordHash(String passwordHash) 
+    {
+         this.passwordHash = passwordHash; 
+    }
 
-    public String getPasswordHash() { return passwordHash; }
-    public void setPasswordHash(String passwordHash) { this.passwordHash = passwordHash; }
+    public String getFirstName() 
+    {
+         return firstName; 
+    }
+    public void setFirstName(String firstName) 
+    {
+         this.firstName = firstName; 
+    }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getLastName() 
+    {
+         return lastName; 
+    }
+    public void setLastName(String lastName) 
+    {
+         this.lastName = lastName; 
+    }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getPhone() 
+    {
+         return phone; 
+    }
+    public void setPhone(String phone) 
+    {
+         this.phone = phone; 
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public Role getRole() 
+    {
+         return role; 
+    }
+    public void setRole(Role role) 
+    {
+         this.role = role; 
+    }
 
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+    public boolean isActive() 
+    {
+         return isActive; 
+    }
+    public void setActive(boolean isActive) 
+    {
+         this.isActive = isActive; 
+    }
 
-    public boolean isActive() { return isActive; }
-    public void setActive(boolean isActive) { this.isActive = isActive; }
+    public LocalDateTime getRegistrationDate() 
+    {
+         return registrationDate; 
+    }
+    public void setRegistrationDate(LocalDateTime registrationDate) 
+    {
+         this.registrationDate = registrationDate; 
+    }
 
-    public LocalDateTime getRegistrationDate() { return registrationDate; }
-    public void setRegistrationDate(LocalDateTime registrationDate) { this.registrationDate = registrationDate; }
+    public LocalDateTime getLastLogin() 
+    {
+         return lastLogin; 
+    }
+    public void setLastLogin(LocalDateTime lastLogin) 
+    {
+         this.lastLogin = lastLogin; 
+    }
 
-    public LocalDateTime getLastLogin() { return lastLogin; }
-    public void setLastLogin(LocalDateTime lastLogin) { this.lastLogin = lastLogin; }
+    public boolean isEmailVerified() 
+    {
+         return emailVerified; 
+    }
+    public void setEmailVerified(boolean emailVerified) 
+    {
+         this.emailVerified = emailVerified; 
+    }
 
-    public boolean isEmailVerified() { return emailVerified; }
-    public void setEmailVerified(boolean emailVerified) { this.emailVerified = emailVerified; }
+    public List<booking> getBookings() 
+    {
+         return bookings; 
+    }
+    public void setBookings(List<booking> bookings) 
+    {
+         this.bookings = bookings; 
+    }
 
-    public List<booking> getBookings() { return bookings; }
-    public void setBookings(List<booking> bookings) { this.bookings = bookings; }
-
-    public List<bookingHistory> getBookingHistories() { return bookingHistories; }
-    public void setBookingHistories(List<bookingHistory> bookingHistories) { this.bookingHistories = bookingHistories; }
+    public List<bookingHistory> getBookingHistories() 
+    {
+         return bookingHistories; 
+    }
+    public void setBookingHistories(List<bookingHistory> bookingHistories) 
+    {
+         this.bookingHistories = bookingHistories; 
+    }
 }

@@ -8,7 +8,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-public class booking {
+public class booking 
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,69 +38,91 @@ private user user;
 private List<bookingHistory> history;
 
 
-    public int getId() {
+    public int getId() 
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id) 
+    {
         this.id = id;
     }
 
-    public String getVehicleNumber() {
+    public String getVehicleNumber() 
+    {
         return vehicleNumber;
     }
 
-    public void setVehicleNumber(String vehicleNumber) {
+    public void setVehicleNumber(String vehicleNumber) 
+    {
         this.vehicleNumber = vehicleNumber;
     }
 
-    public LocalDateTime getStartTime() {
+    public LocalDateTime getStartTime() 
+    {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(LocalDateTime startTime) 
+    {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public LocalDateTime getEndTime() 
+    {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(LocalDateTime endTime) 
+    {
         this.endTime = endTime;
     }
 
-    public double getTotalCost() {
+    public double getTotalCost() 
+    {
         return totalCost;
     }
 
-    public void setTotalCost(double totalCost) {
+    public void setTotalCost(double totalCost) 
+    {
         this.totalCost = totalCost;
     }
 
-    public String getStatus() {
+    public String getStatus() 
+    {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(String status) 
+    {
         this.status = status;
     }
 
-    public user getUser() {
+    public user getUser() 
+    {
         return user;
     }
 
-    public void setUser(user user) {
+    public void setUser(user user) 
+    {
         this.user = user;
     }
 
-    public parkingSlot getParkingSlot() {
+    public parkingSlot getParkingSlot() 
+    {
         return parkingSlot;
     }
 
-    public void setParkingSlot(parkingSlot parkingSlot) {
+    public void setParkingSlot(parkingSlot parkingSlot) 
+    {
         this.parkingSlot = parkingSlot;
     }
-    public List<bookingHistory> getHistory() { return history; }
-public void setHistory(List<bookingHistory> history) { this.history = history; }
+    public List<bookingHistory> getHistory() 
+    { 
+        return history;
+    }
+    public void setHistory(List<bookingHistory> history) 
+    { 
+        this.history = history; 
+    }
 }

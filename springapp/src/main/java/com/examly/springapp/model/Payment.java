@@ -42,11 +42,8 @@ public class Payment {
         FAILED,
         REFUNDED
     }
-
-    // Default constructor
     public Payment() {}
 
-    // Constructor with fields (optional)
     public Payment(Long bookingId, BigDecimal amount, String paymentMethod,
                    String transactionId, PaymentStatus status, LocalDateTime paymentDate,
                    BigDecimal refundAmount, String gatewayResponse) {
@@ -60,7 +57,6 @@ public class Payment {
         this.gatewayResponse = gatewayResponse;
     }
 
-    // Getters and Setters
     public Long getPaymentId() {
         return paymentId;
     }

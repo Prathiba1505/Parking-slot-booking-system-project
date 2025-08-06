@@ -9,33 +9,39 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/payments")
-public class PaymentController {
+public class PaymentController 
+{
 
     @Autowired
     private PaymentService paymentService;
 
     @PostMapping
-    public Payment createPayment(@RequestBody Payment payment) {
+    public Payment createPayment(@RequestBody Payment payment) 
+    {
         return paymentService.createPayment(payment);
     }
 
     @GetMapping
-    public List<Payment> getAllPayments() {
+    public List<Payment> getAllPayments() 
+    {
         return paymentService.getAllPayments();
     }
 
     @GetMapping("/{id}")
-    public Payment getPaymentById(@PathVariable Long id) {
+    public Payment getPaymentById(@PathVariable Long id) 
+    {
         return paymentService.getPaymentById(id);
     }
 
     @GetMapping("/transaction/{transactionId}")
-    public Payment getByTransactionId(@PathVariable String transactionId) {
+    public Payment getByTransactionId(@PathVariable String transactionId) 
+    {
         return paymentService.getPaymentByTransactionId(transactionId);
     }
 
     @DeleteMapping("/{id}")
-    public void deletePayment(@PathVariable Long id) {
+    public void deletePayment(@PathVariable Long id) 
+    {
         paymentService.deletePayment(id);
     }
 }

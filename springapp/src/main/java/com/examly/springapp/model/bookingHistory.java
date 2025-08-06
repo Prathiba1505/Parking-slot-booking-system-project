@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-public class bookingHistory {
+public class bookingHistory 
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +39,6 @@ public class bookingHistory {
 
     @Column(length = 200)
     private String reason;
-
-    // Getters and Setters
 
     public int getHistoryId() {
         return historyId;

@@ -12,7 +12,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-public class userController {
+public class userController 
+{
 
     @Autowired
     private userService userService;
@@ -21,18 +22,21 @@ public class userController {
     public Page<user> getAllUsers(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size,
                                   @RequestParam(defaultValue = "userId") String sortBy,
-                                  @RequestParam(defaultValue = "asc") String direction) {
+                                  @RequestParam(defaultValue = "asc") String direction) 
+    {
         return userService.getAllUsers(page, size, sortBy, direction);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserById(@PathVariable int id) {
+    public ResponseEntity<?> getUserById(@PathVariable int id) 
+    {
         Optional<user> user = userService.getUserById(id);
         return user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<?> createUser(@RequestBody user user) {
+    public ResponseEntity<?> createUser(@RequestBody user user) 
+    {
         user savedUser = userService.saveUser(user);
         if (savedUser == null) {
             return ResponseEntity.badRequest().body("User with this email already exists.");
@@ -41,7 +45,8 @@ public class userController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody user user) {
+    public ResponseEntity<?> updateUser(@PathVariable int id, @RequestBody user user) 
+    {
         user updatedUser = userService.updateUser(id, user);
         if (updatedUser == null) {
             return ResponseEntity.notFound().build();
@@ -50,14 +55,16 @@ public class userController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable int id) {
+    public ResponseEntity<?> deleteUser(@PathVariable int id) 
+    {
         userService.deleteUser(id);
         return ResponseEntity.ok("User deleted successfully.");
     }
 
     @GetMapping("/find")
     public List<user> findByFirstNameAndEmail(@RequestParam String firstName,
-                                              @RequestParam String email) {
+                                              @RequestParam String email) 
+    {
         return userService.findByFirstNameAndEmail(firstName, email);
     }
 }

@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/booking-history")
-public class bookingHistoryController {
+public class bookingHistoryController 
+{
 
     @Autowired
     private bookingHistoryService bookingHistoryService;
@@ -22,24 +23,28 @@ public class bookingHistoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getHistoryById(@PathVariable int id) {
+    public ResponseEntity<?> getHistoryById(@PathVariable int id) 
+    {
         Optional<bookingHistory> history = bookingHistoryService.getHistoryById(id);
         return history.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/booking/{bookingId}")
-    public List<bookingHistory> getHistoriesByBookingId(@PathVariable int bookingId) {
+    public List<bookingHistory> getHistoriesByBookingId(@PathVariable int bookingId) 
+    {
         return bookingHistoryService.getHistoriesByBookingId(bookingId);
     }
 
     @PostMapping
-    public ResponseEntity<bookingHistory> createHistory(@RequestBody bookingHistory history) {
+    public ResponseEntity<bookingHistory> createHistory(@RequestBody bookingHistory history) 
+    {
         bookingHistory saved = bookingHistoryService.saveHistory(history);
         return ResponseEntity.ok(saved);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteHistory(@PathVariable int id) {
+    public ResponseEntity<?> deleteHistory(@PathVariable int id) 
+    {
         bookingHistoryService.deleteHistory(id);
         return ResponseEntity.ok("History record deleted.");
     }
