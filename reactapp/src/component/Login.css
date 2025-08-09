@@ -1,0 +1,126 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #16d9e3 0%, #30c7ec 100%);
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 25px;
+  box-shadow: 0 6px 22px rgba(24, 117, 247, 0.15), 
+              0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  text-align: center;
+}
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.login-container label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #444;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+  border: 1.3px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fafbfc;
+  transition: border 0.2s;
+  margin-bottom: 1rem;
+}
+
+.login-container input:focus {
+  border-color: #51B7F5;
+  outline: none;
+}
+
+.login-container button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #51B7F5;
+  color: white;
+  font-size: 1.13rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+  margin-top: 0.3rem;
+  transition: background .2s;
+}
+
+.login-container button:hover {
+  background: #329ee4;
+}
+
+.error {
+  color: #e94d4d;
+  background: #fdeeee;
+  font-size: 0.95rem;
+  width: 100%;
+  padding: 0.6em 0.9em;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    max-width: 95vw;
+    padding: 1.2rem 0.6rem;
+  }
+}
+.nav-bar {
+  background: #16d9e3; 
+  padding: 18px 0;
+  text-align: left;
+}
+
+.nav-bar a {
+  color: #420d7b; 
+  text-decoration: underline;
+  font-size: 1.35rem;
+  font-weight: 500;
+  margin: 0 8px;
+  transition: color 0.18s, text-decoration-thickness 0.18s;
+}
+
+.nav-bar a:hover {
+  color: #2754ab; 
+  text-decoration-thickness: 2.5px;
+  text-underline-offset: 3px;
+}
+
+.nav-bar .separator {
+  color: #420d7b;
+  margin: 0 4px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+@media(max-width: 480px) {
+  .nav-bar a {
+    font-size: 1rem;
+    margin: 0 5px;
+  }
+}
