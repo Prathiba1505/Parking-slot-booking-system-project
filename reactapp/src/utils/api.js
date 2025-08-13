@@ -20,9 +20,9 @@ export async function signup(data) {
     username: data.username,
     email: data.email,
     passwordHash: data.password,
-    firstName: "Temp",
-    lastName: "User",
-    phone: "0000000000",
+    firstName: "-",
+    lastName: "-",
+    phone: "-",
     role: "DEFAULT_USER",
   };
 

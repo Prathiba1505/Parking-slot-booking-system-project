@@ -34,6 +34,12 @@ public class ParkingSlotController
         return slot.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/all")
+public List<parkingSlot> getAllSlotsList() {
+    return slotService.getAllSlotsList();
+}
+
+
     @PostMapping
     public ResponseEntity<?> createSlot(@RequestBody parkingSlot slot) 
     {

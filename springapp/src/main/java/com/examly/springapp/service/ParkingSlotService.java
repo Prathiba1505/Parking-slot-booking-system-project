@@ -30,6 +30,10 @@ public class ParkingSlotService {
         }
         return parkingSlotRepository.save(slot);
     }
+    public List<parkingSlot> getAllSlotsList() {
+    return parkingSlotRepository.findAll();
+}
+
 
     public parkingSlot updateSlot(int id, parkingSlot slot) {
         Optional<parkingSlot> existingSlot = parkingSlotRepository.findById(id);

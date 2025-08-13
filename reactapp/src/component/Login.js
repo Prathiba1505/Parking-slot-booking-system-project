@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
-import './Login.css';
+import './signup.css'; 
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ function Login({ onLogin }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
     try {
       const user = await api.login(email, password);
       onLogin(user);
@@ -21,32 +22,30 @@ function Login({ onLogin }) {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
+    <div className="signup-container">
+      <div className="signup-box">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
           <input
             type="email"
+            name="email"
+            placeholder="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
             required
           />
-        </div>
-
-        <div>
-          <label>Password:</label>
           <input
             type="password"
+            name="password"
+            placeholder="Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={e => setPassword(e.target.value)}
             required
           />
-        </div>
-
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Login</button>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+        </form>
+      </div>
     </div>
   );
 }

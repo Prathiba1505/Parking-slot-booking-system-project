@@ -1,6 +1,7 @@
 package com.examly.springapp.service;
 
 import com.examly.springapp.model.user;
+import com.examly.springapp.model.user.Role;
 import com.examly.springapp.repository.userRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -50,6 +51,10 @@ public class userService {
 
     public List<user> findByFirstNameAndEmail(String firstName, String email) {
         return userRepository.findByFirstNameAndEmail(firstName, email);
+    }
+
+    public List<user> findByRole(Role role) {
+        return userRepository.findByRole(role);
     }
 
     public void deleteUser(int id) {
