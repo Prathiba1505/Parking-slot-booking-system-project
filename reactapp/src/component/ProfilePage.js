@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProfilePage.css";
 
 function ProfilePage() {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState({});
@@ -57,71 +59,88 @@ function ProfilePage() {
 
   return (
     <div className="profile-container">
-      <h2 className="profile-title">User Profile</h2>
-      <div className="profile-card">
-        {editMode ? (
-          <>
-            <div className="form-group">
-              <label>First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName || ""}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName || ""}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Email</label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email || ""}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              <label>Phone</label>
-              <input
-                type="text"
-                name="phone"
-                value={formData.phone || ""}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="profile-actions">
-              <button className="save-btn" onClick={handleSave}>
-                Save
-              </button>
-              <button className="cancel-btn" onClick={() => setEditMode(false)}>
-                Cancel
-              </button>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="profile-row"><span>ID:</span> {user.userId}</div>
-            <div className="profile-row"><span>Username:</span> {user.username}</div>
-            <div className="profile-row"><span>First Name:</span> {user.firstName}</div>
-            <div className="profile-row"><span>Last Name:</span> {user.lastName}</div>
-            <div className="profile-row"><span>Email:</span> {user.email}</div>
-            <div className="profile-row"><span>Phone:</span> {user.phone || "N/A"}</div>
-            <div className="profile-row"><span>Role:</span> {user.role}</div>
-            <div className="profile-actions">
-              <button className="edit-btn" onClick={() => setEditMode(true)}>
-                Edit Profile
-              </button>
-            </div>
-          </>
-        )}
+      <div className="profile-sidebar">
+        <h2>Your Profile</h2>
+        <button onClick={() => navigate("/home")}>Home</button>
+        <button onClick={() => navigate("/profile")}>Profile</button>
+        <button onClick={() => navigate("/settings")}>Settings</button>
+        <button onClick={() => navigate("/about")}>About</button>
+        <button
+          onClick={() => {
+            localStorage.removeItem("user");
+            navigate("/login");
+          }}
+        >
+          Logout
+        </button>
+      </div>
+      <div className="profile-main">
+        <h1>Profile</h1>
+        <div className="profile-card">
+          {editMode ? (
+            <>
+              <div className="form-group">
+                <label>First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName || ""}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName || ""}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email || ""}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone || ""}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="profile-actions">
+                <button className="save-btn" onClick={handleSave}>
+                  Save
+                </button>
+                <button className="cancel-btn" onClick={() => setEditMode(false)}>
+                  Cancel
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="profile-row"><span>ID:</span> {user.userId}</div>
+              <div className="profile-row"><span>Username:</span> {user.username}</div>
+              <div className="profile-row"><span>First Name:</span> {user.firstName}</div>
+              <div className="profile-row"><span>Last Name:</span> {user.lastName}</div>
+              <div className="profile-row"><span>Email:</span> {user.email}</div>
+              <div className="profile-row"><span>Phone:</span> {user.phone || "N/A"}</div>
+              <div className="profile-row"><span>Role:</span> {user.role}</div>
+              <div className="profile-actions">
+                <button className="edit-btn" onClick={() => setEditMode(true)}>
+                  Edit Profile
+                </button>
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import SuccessPage from './component/SuccessPage';
 import BookingHistoryPage from './component/BookingHistoryPage';
 import FacilitiesPage from './component/FacilitiesPage';
 import AboutPage from './component/AboutPage';
+import SettingsPage from './component/SettingsPage';
 
 import './App.css';
 
@@ -81,6 +82,7 @@ function AppContent({ user, onLogin }) {
         <Route path="/signup" element={<Signup />} />
         <Route path="/home" element={<PrivateRoute><HomePage /></PrivateRoute>} />
         <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
+        <Route path="/settings" element={<PrivateRoute><SettingsPage /></PrivateRoute>} />
         <Route path="/booking" element={<PrivateRoute><BookingPage /></PrivateRoute>} />
         <Route path="/payment" element={<PrivateRoute><PaymentPage /></PrivateRoute>} />
         <Route path="/success" element={<PrivateRoute><SuccessPage /></PrivateRoute>} />

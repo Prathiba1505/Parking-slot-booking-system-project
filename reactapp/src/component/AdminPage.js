@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminPage.css";
@@ -6,7 +7,7 @@ function AdminPage() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("dashboard");
 
-  const [totalSlots, setTotalSlots] = useState(1000); 
+  const [totalSlots, setTotalSlots] = useState(10); 
   const [bookings, setBookings] = useState([]);
   const [facilities, setFacilities] = useState([]);
   const [analytics, setAnalytics] = useState([]);

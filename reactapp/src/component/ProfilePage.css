@@ -1,20 +1,52 @@
 .profile-container {
-  padding: 40px 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh; /* ✅ Changed from 80vh to 100vh */
-  background: #f0f4f8;
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-sizing: border-box; /* ensures padding doesn't break height */
+  background: #f0f4f8;
 }
 
+.profile-sidebar {
+  width: 220px;
+  background-color: #1e3a8a;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+}
 
-.profile-title {
-  font-size: 28px;
-  font-weight: 700;
+.profile-sidebar h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-sidebar button {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.profile-sidebar button:hover {
+  background-color: #2563eb;
+  transform: translateX(5px);
+}
+
+.profile-main {
+  flex: 1;
+  padding: 60px 40px;
+}
+
+.profile-main h1 {
+  font-size: 32px;
   color: #1e3a8a;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .profile-card {
