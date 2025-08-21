@@ -19,8 +19,6 @@ import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
-
-  // On app load, check localStorage for existing user
   useEffect(() => {
     const storedUserId = localStorage.getItem('userId');
     const storedUserEmail = localStorage.getItem('userEmail');
@@ -51,13 +49,11 @@ function App() {
   );
 }
 
-// Route protection for regular users
 function PrivateRoute({ children }) {
   const userId = localStorage.getItem('userId');
   return userId ? children : <Navigate to="/" replace />;
 }
 
-// Route protection for admin users
 function AdminRoute({ children }) {
   const userId = localStorage.getItem('userId');
   const role = localStorage.getItem('userRole');
@@ -68,8 +64,6 @@ function AdminRoute({ children }) {
 
 function AppContent({ user, onLogin }) {
   const location = useLocation();
-
-  // Show public nav only on truly public pages
   const showPublicNav =
     location.pathname === '/' ||
     location.pathname === '/signup' ||
@@ -92,8 +86,6 @@ function AppContent({ user, onLogin }) {
         <Route path="/admin-login" element={<AdminLogin onLogin={onLogin} />} />
         <Route path="/admin" element={<AdminRoute><AdminPage /></AdminRoute>} />
       </Routes>
-
-      {/* Public navigation bar */}
       {showPublicNav && (
         <nav className="nav-bar">
           <a href="/">Login</a>

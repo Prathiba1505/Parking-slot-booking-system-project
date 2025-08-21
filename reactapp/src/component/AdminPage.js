@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminPage.css";
@@ -16,8 +15,15 @@ function AdminPage() {
   const [loadingFacilities, setLoadingFacilities] = useState(true);
   const [loadingAnalytics, setLoadingAnalytics] = useState(true);
 
+  const [editFacilityId, setEditFacilityId] = useState(null);
+
   useEffect(() => {
-    // Fetch bookings
+    fetchBookings();
+    fetchFacilities();
+    fetchAnalytics();
+  }, []);
+
+  const fetchBookings = () => {
     fetch("http://localhost:8081/api/bookings")
       .then((res) => res.json())
       .then((data) => {
@@ -25,8 +31,9 @@ function AdminPage() {
         setLoadingBookings(false);
       })
       .catch(() => setLoadingBookings(false));
+  };
 
-    // Fetch facilities (optional)
+  const fetchFacilities = () => {
     fetch("http://localhost:8081/facilities")
       .then((res) => res.json())
       .then((data) => {
@@ -34,8 +41,9 @@ function AdminPage() {
         setLoadingFacilities(false);
       })
       .catch(() => setLoadingFacilities(false));
+  };
 
-    // Fetch analytics (optional)
+  const fetchAnalytics = () => {
     fetch("http://localhost:8081/facility-analytics")
       .then((res) => res.json())
       .then((data) => {
@@ -43,18 +51,85 @@ function AdminPage() {
         setLoadingAnalytics(false);
       })
       .catch(() => setLoadingAnalytics(false));
-  }, []);
+  };
 
   const handleLogout = () => {
     localStorage.clear();
     navigate("/admin-login");
   };
 
+  const handleAddFacility = (e) => {
+    e.preventDefault();
+    const facilityData = {
+      facilityName: e.target.facilityName.value,
+      address: e.target.address.value,
+      city: e.target.city.value,
+      state: e.target.state.value,
+      zipCode: e.target.zipCode.value,
+      totalSlots: parseInt(e.target.totalSlots.value),
+      operatingHours: e.target.operatingHours.value,
+      contactInfo: e.target.contactInfo.value,
+      managerId: parseInt(e.target.managerId.value),
+      latitude: e.target.latitude.value ? parseFloat(e.target.latitude.value) : null,
+      longitude: e.target.longitude.value ? parseFloat(e.target.longitude.value) : null
+    };
+
+    if (editFacilityId) {
+      fetch(`http://localhost:8081/facilities/${editFacilityId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(facilityData)
+      })
+        .then((res) => res.json())
+        .then(() => {
+          fetchFacilities();
+          e.target.reset();
+          setEditFacilityId(null);
+        })
+        .catch((err) => console.error("Error updating facility:", err));
+    } else {
+      fetch("http://localhost:8081/facilities", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(facilityData)
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFacilities([...facilities, data]);
+          e.target.reset();
+        })
+        .catch((err) => console.error("Error adding facility:", err));
+    }
+  };
+
+  const handleEditFacility = (facility) => {
+    setEditFacilityId(facility.facilityId);
+
+    const form = document.getElementById("facility-form");
+    form.facilityName.value = facility.facilityName;
+    form.address.value = facility.address;
+    form.city.value = facility.city;
+    form.state.value = facility.state;
+    form.zipCode.value = facility.zipCode;
+    form.totalSlots.value = facility.totalSlots;
+    form.operatingHours.value = facility.operatingHours || "";
+    form.contactInfo.value = facility.contactInfo || "";
+    form.managerId.value = facility.managerId;
+    form.latitude.value = facility.latitude || "";
+    form.longitude.value = facility.longitude || "";
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleDeleteFacility = (facilityId) => {
+    if (!window.confirm("Are you sure you want to delete this facility?")) return;
+    fetch(`http://localhost:8081/facilities/${facilityId}`, { method: "DELETE" })
+      .then(() => fetchFacilities())
+      .catch((err) => console.error("Error deleting facility:", err));
+  };
+
   const renderContent = () => {
     if (activeTab === "dashboard") {
-      // Calculate remaining available slots by subtracting bookings count from totalSlots
       const availableSlots = totalSlots - bookings.length;
-
       return (
         <div className="dashboard-content">
           <div className="stat-card">
@@ -76,8 +151,6 @@ function AdminPage() {
         </div>
       );
     }
-
-    // ...rest of your tab rendering (bookings, facilities, analytics) unchanged
 
     if (activeTab === "bookings") {
       if (loadingBookings) return <p>Loading bookings...</p>;
@@ -115,40 +188,70 @@ function AdminPage() {
     }
 
     if (activeTab === "facilities") {
-      if (loadingFacilities) return <p>Loading facilities...</p>;
-      if (!facilities.length) return <p>No facilities found.</p>;
-
       return (
         <div>
           <h2>Facilities</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Facility ID</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Total Slots</th>
-                <th>Operating Hours</th>
-                <th>Contact Info</th>
-              </tr>
-            </thead>
-            <tbody>
-              {facilities.map((f) => (
-                <tr key={f.facilityId}>
-                  <td>{f.facilityId}</td>
-                  <td>{f.facilityName}</td>
-                  <td>{f.address}</td>
-                  <td>{f.city}</td>
-                  <td>{f.state}</td>
-                  <td>{f.totalSlots}</td>
-                  <td>{f.operatingHours || "-"}</td>
-                  <td>{f.contactInfo || "-"}</td>
+
+          <div className="facility-form">
+            <h3>{editFacilityId ? "Edit Facility" : "Add New Facility"}</h3>
+            <form id="facility-form" onSubmit={handleAddFacility}>
+              <input name="facilityName" placeholder="Facility Name" required />
+              <input name="address" placeholder="Address" required />
+              <input name="city" placeholder="City" required />
+              <input name="state" placeholder="State" required />
+              <input name="zipCode" placeholder="Zip Code" required />
+              <input name="totalSlots" type="number" placeholder="Total Slots" required />
+              <input name="operatingHours" placeholder="Operating Hours" />
+              <input name="contactInfo" placeholder="Contact Info" />
+              <input name="managerId" type="number" placeholder="Manager ID" required />
+              <input name="latitude" type="number" step="0.000001" placeholder="Latitude" />
+              <input name="longitude" type="number" step="0.000001" placeholder="Longitude" />
+              <button type="submit">{editFacilityId ? "Update Facility" : "Add Facility"}</button>
+            </form>
+          </div>
+
+          {loadingFacilities ? (
+            <p>Loading facilities...</p>
+          ) : facilities.length === 0 ? (
+            <p>No facilities found.</p>
+          ) : (
+            <table>
+              <thead>
+                <tr>
+                  <th>Facility ID</th>
+                  <th>Name</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>Total Slots</th>
+                  <th>Operating Hours</th>
+                  <th>Contact Info</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {facilities.map((f) => (
+                  <tr key={f.facilityId}>
+                    <td>{f.facilityId}</td>
+                    <td>{f.facilityName}</td>
+                    <td>{f.address}</td>
+                    <td>{f.city}</td>
+                    <td>{f.state}</td>
+                    <td>{f.totalSlots}</td>
+                    <td>{f.operatingHours || "-"}</td>
+                    <td>{f.contactInfo || "-"}</td>
+                    <td>
+  <div className="action-buttons">
+    <button className="edit-btn" onClick={() => handleEditFacility(f)}>Edit</button>
+    <button className="delete-btn" onClick={() => handleDeleteFacility(f.facilityId)}>Delete</button>
+  </div>
+</td>
+
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </div>
       );
     }

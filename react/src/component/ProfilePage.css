@@ -1,0 +1,159 @@
+.profile-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+}
+
+.profile-sidebar {
+  width: 220px;
+  background-color: #1e3a8a;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: white;
+}
+
+.profile-sidebar h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-sidebar button {
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.profile-sidebar button:hover {
+  background-color: #2563eb;
+  transform: translateX(5px);
+}
+
+.profile-main {
+  flex: 1;
+  padding: 60px 40px;
+}
+
+.profile-main h1 {
+  font-size: 32px;
+  color: #1e3a8a;
+  margin-bottom: 30px;
+}
+
+.profile-card {
+  background: #ffffff;
+  padding: 30px 35px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-row span {
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-card label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.profile-card input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.profile-card input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(37,99,235,0.3);
+}
+
+.profile-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.edit-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  background-color: #1e40af;
+}
+
+.save-btn {
+  background-color: #10b981;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: #047857;
+}
+
+.cancel-btn {
+  background-color: #ef4444;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #b91c1c;
+}
+
+.error {
+  color: #b91c1c;
+  font-weight: bold;
+  font-size: 16px;
+}

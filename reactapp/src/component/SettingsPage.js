@@ -24,15 +24,19 @@ function SettingsPage() {
 
     try {
       const userId = localStorage.getItem("userId");
-      await axios.post(`/api/change-password`, {
-        userId,
-        oldPassword,
-        newPassword
-      });
-      alert("Password updated successfully!");
+      const response = await axios.post(
+        "http://localhost:8081/api/auth/change-password",
+        {
+          userId,
+          oldPassword,
+          newPassword
+        }
+      );
+
+      alert(response.data.message);
     } catch (err) {
       console.error(err);
-      alert("Old password is incorrect or update failed!");
+      alert(err.response?.data?.message || "Password update failed!");
     }
   };
 
@@ -76,6 +80,7 @@ function SettingsPage() {
             <span className="slider round"></span>
           </label>
         </div>
+
         <div className="settings-buttons">
           <button className="settings-btn" onClick={handleSaveSettings}>
             Save Settings

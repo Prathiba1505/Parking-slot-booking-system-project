@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Service
 public class userService {
 
     @Autowired
     private userRepository userRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public Page<user> getAllUsers(int page, int size, String sortBy, String direction) {
         Sort sort = direction.equalsIgnoreCase("desc") ? Sort.by(sortBy).descending() : Sort.by(sortBy).ascending();
@@ -30,7 +33,30 @@ public class userService {
         if (userRepository.existsByEmail(user.getEmail())) {
             return null;
         }
-        return userRepository.save(user);
+        String otp = String.format("%06d", new Random().nextInt(999999));
+        user.setOtp(otp);
+        user.setOtpExpiry(LocalDateTime.now().plusMinutes(5));
+        user.setEmailVerified(false);
+
+        user savedUser = userRepository.save(user);
+        emailService.sendOtp(user.getEmail(), otp);
+
+        return savedUser;
+    }
+
+    public boolean verifyOtp(String email, String otp) {
+        Optional<user> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isPresent()) {
+            user u = optionalUser.get();
+            if (u.getOtp() != null && u.getOtp().equals(otp) && u.getOtpExpiry().isAfter(LocalDateTime.now())) {
+                u.setEmailVerified(true);
+                u.setOtp(null);
+                u.setOtpExpiry(null);
+                userRepository.save(u);
+                return true;
+            }
+        }
+        return false;
     }
 
     public user updateUser(int id, user user) {

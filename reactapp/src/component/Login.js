@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as api from '../utils/api';
@@ -13,11 +12,15 @@ function Login({ onLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+
     try {
       const user = await api.login(email, password);
+      localStorage.setItem('userId', user.userId);
+
       onLogin(user);
       navigate('/home');
     } catch (err) {
+      console.error(err);
       setError('Invalid email or password');
     }
   };

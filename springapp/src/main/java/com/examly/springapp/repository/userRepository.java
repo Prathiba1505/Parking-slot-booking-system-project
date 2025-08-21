@@ -1,4 +1,3 @@
-
 package com.examly.springapp.repository;
 
 import com.examly.springapp.model.user;
@@ -12,5 +11,6 @@ public interface userRepository extends JpaRepository<user, Integer> {
     boolean existsByUsername(String username);
     List<user> findByFirstNameAndEmail(String firstName, String email);
     Optional<user> findByEmailAndPasswordHash(String email, String passwordHash);
-    List<user> findByRole(Role role); // extra method for admins
+    List<user> findByRole(Role role);
+    Optional<user> findByEmail(String email);
 }

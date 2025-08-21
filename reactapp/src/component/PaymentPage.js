@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 function PaymentPage() {
   const navigate = useNavigate();
   const location = useLocation();
-  const bookingDetails = location.state || {}; // Booking info from BookingPage
+  const bookingDetails = location.state || {}; 
 
   const [paymentMethod, setPaymentMethod] = useState("");
   const [formData, setFormData] = useState({
@@ -48,7 +48,6 @@ function PaymentPage() {
     if (!userEmail) return alert("User not logged in.");
 
     try {
-      // Send booking confirmation email
       const response = await fetch("http://localhost:8081/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -67,8 +66,6 @@ function PaymentPage() {
       console.error(err);
       alert("Payment successful, but email sending failed.");
     }
-
-    // Clear form and navigate
     setFormData({
       cardNumber: "",
       expiry: "",

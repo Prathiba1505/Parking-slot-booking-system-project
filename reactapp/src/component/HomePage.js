@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -18,11 +17,9 @@ function HomePage() {
   ];
 
   useEffect(() => {
-    // Fetch booking history for current user (assuming userId is stored in localStorage)
     const userId = localStorage.getItem("userId"); 
     axios.get(`/api/booking-history`)
       .then((res) => {
-        // Filter history by user
         const userHistory = res.data.filter(h => h.changedBy?.id == userId);
         setBookingHistory(userHistory);
         setLoading(false);
@@ -35,7 +32,6 @@ function HomePage() {
 
   return (
     <div className="homepage-container">
-      {/* Sidebar */}
       <aside className="sidebar">
         <div className="sidebar-logo">Parking System</div>
         {menuItems.map((item, index) => (
@@ -51,8 +47,6 @@ function HomePage() {
           </button>
         ))}
       </aside>
-
-      {/* Main Content */}
       <main className="main-content">
         <section className="hero-section">
           <h1>Welcome to Parking Slot System</h1>

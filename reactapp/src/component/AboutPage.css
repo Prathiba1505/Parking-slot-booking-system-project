@@ -5,7 +5,6 @@
   background-color: #f4f6f8;
 }
 
-/* Sidebar */
 .about-sidebar {
   width: 220px;
   background-color: #1e3a8a;
@@ -39,7 +38,6 @@
   transform: translateX(5px);
 }
 
-/* Main Content */
 .about-main {
   flex: 1;
   padding: 60px 40px;
