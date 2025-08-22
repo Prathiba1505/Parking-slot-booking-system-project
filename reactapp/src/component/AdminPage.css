@@ -203,3 +203,40 @@ th {
 .edit-btn:hover {
   background-color: #16a085;
 }
+
+table form {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+table form input[type="text"] {
+  padding: 6px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 0.9em;
+  width: 120px;
+}
+
+table form button {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: #1abc9c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+table form button:hover {
+  background-color: #16a085;
+}
+
+.action-buttons button {
+  margin-right: 8px;
+}
+
+.action-buttons button:last-child {
+  margin-right: 0;
+}
